@@ -4,14 +4,14 @@ const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPl
 module.exports = {
     mode: "development",
     devServer: {
-        port: 1990
+        port: 1992
     },
     plugins : [
         new ModuleFederationPlugin({
-            name:"container",
-            remotes: {
-                app1: "app1@http://localhost:1991/remoteEntry.js",
-                app2: "app2@http://localhost:1992/remoteEntry.js"
+            name: 'app2',
+            filename: 'remoteEntry.js',
+            exposes: {
+                "./app2Index": "./src/index.js"
             }
         }),
         new HtmlWebpackPlugin({
